@@ -38,8 +38,8 @@
             "entity": "Scene"
           }
             ],    
-    "url": "",
-    "manifest": "",
-    "download": ""
+    "url": "https://github.com/nloew/SOWL-shared-lib",
+    "manifest": "https://raw.githubusercontent.com/nloew/SOWL-shared-lib/main/module.json",
+    "download": "https://github.com/nloew/SOWL-shared-lib/archive/refs/tags/v0.1.zip"
   }
   
