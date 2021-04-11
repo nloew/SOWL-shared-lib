@@ -4,6 +4,11 @@ class SOWL_System {
         this._animationStack = new Object();
         this._globalCallID = 0;
         Hooks.on("SOWL_animationDone", this._SOWL_enablePuzzle.bind(this));
+
+        //traps
+        this._pitTrap = {
+            img: "/modules/SOWL-shared-lib/assets/pearl_blue.png"
+        }
     };
 
     _sleep(ms) {
@@ -149,6 +154,23 @@ class SOWL_System {
             controller.data.flags["SOWL"]["allowCheck"] = true;
         }
     }
+
+    _SOWL_attachTile(region) {
+        console.log(region);
+        const tile = new Tile({
+            img: this._pitTrap.img,
+            width: region.scene.data.grid,
+            height: region.scene.data.grid,
+            x: region.x,
+            y: region.y,
+            z: 900,
+            rotation: 0,
+            hidden: false,
+            locked: false,
+            //flags: clock.flags
+        });
+        var pitItem = canvas.scene.createEmbeddedEntity('Tile', tile.data);
+    }
 };
 
 class SOWL_RingPuzzle1 {
@@ -156,10 +178,10 @@ class SOWL_RingPuzzle1 {
         //Hooks.on("SOWL_animationDone", this._SOWL_enablePuzzle.bind(this));
     };
 
-    _SOWL_resetPuzzleTrigger(){
+    _SOWL_resetPuzzleTrigger() {
         Hooks.once("SOWL_animationDone", this._SOWL_resetPuzzle.bind(this));
     }
-    _SOWL_resetPuzzle(){
+    _SOWL_resetPuzzle() {
         game.LightSwitch.flipTheSwitchGM("ringPuzzleReset")
     }
 
